@@ -1,0 +1,30 @@
+{
+  "name": "inline-bookmark",
+  "version": "1.0.0",
+  "description": "create inline bookmarks",
+  "main": "index",
+  "bin": {
+    "bookmark": "./bin/cmd.js"
+  },
+  "scripts": {
+    "test": "eslint . && tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoubin/inline-bookmark.git"
+  },
+  "author": "zoubin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoubin/inline-bookmark/issues"
+  },
+  "homepage": "https://github.com/zoubin/inline-bookmark#readme",
+  "dependencies": {
+    "uglify-js": "^2.5.0",
+    "urlencode": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.6.0",
+    "tap": "^2.1.1"
+  }
+}
