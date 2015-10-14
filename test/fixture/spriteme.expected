@@ -1,0 +1,1 @@
+javascript:(function%20wrapper()%7Bvar%20e%3Ddocument.createElement(%22script%22)%3Be.type%3D%22text%2Fjavascript%22%2Ce.src%3D%22http%3A%2F%2Fspriteme.org%2Fspriteme.js%22%2Cdocument.head.appendChild(e)%7D)()

@@ -1,6 +1,13 @@
 #!/usr/bin/env node
 
 var bookmark = require('..')
-var file = process.argv[2] || 'index.js'
-process.stdout.write(bookmark(file))
+var args = process.argv.slice(2)
+
+var mark
+if (args[0] === '-s') {
+  mark = bookmark.src(args[1])
+} else {
+  mark = bookmark(args[0] || 'index.js')
+}
+process.stdout.write(mark)
 

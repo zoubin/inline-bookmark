@@ -8,13 +8,28 @@ module.exports = function (file) {
     s.innerText = '!' + bookmark.toString() + '()'
     document.head.appendChild(s)
     function bookmark() {
-      /* body */
+      /*******/
     }
   }
-  var code = uglify.minify(
-    wrapper.toString().replace('/* body */', fs.readFileSync(file, 'utf8')),
-    { fromString: true }
-  ).code
+  return bookmarkify(
+    wrapper.toString().replace('/*******/', fs.readFileSync(file, 'utf8'))
+  )
+}
+
+module.exports.src = function (src) {
+  function wrapper() {
+    var s = document.createElement('script')
+    s.type = 'text/javascript'
+    s.src = '/*******/'
+    document.head.appendChild(s)
+  }
+  return bookmarkify(
+    wrapper.toString().replace('/*******/', src)
+  )
+}
+
+function bookmarkify(code) {
+  code = uglify.minify(code, { fromString: true }).code
   return 'javascript:(' + urlencode(code) + ')()'
 }
 
