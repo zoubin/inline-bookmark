@@ -1,6 +1,6 @@
 {
   "name": "inline-bookmark",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "create inline bookmarks",
   "main": "index",
   "bin": {
