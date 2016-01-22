@@ -1,13 +1,25 @@
 #!/usr/bin/env node
 
-var bookmark = require('..')
-var args = process.argv.slice(2)
+var Command = require('commander').Command
 
-var mark
-if (args[0] === '-s') {
-  mark = bookmark.src(args[1])
+var program = new Command('bookmark')
+
+program
+  .version(require('../package.json').version)
+  .usage('[options]')
+  .option('-f, --file <file>', 'Wrap the script.')
+  .option('-x, --external <src>', 'Request an external script.')
+  .option('-M, --no-minify', 'Suppress uglify')
+  .parse(process.argv)
+
+var bookmark = require('..')
+
+if (program.external) {
+  process.stdout.write(bookmark.src(program.external, program.minify))
+} else if (program.file) {
+  process.stdout.write(bookmark(program.file, program.minify))
 } else {
-  mark = bookmark(args[0] || 'index.js')
+  console.error('Run `bookmark -h` to see the help text.')
+  process.exit(-1)
 }
-process.stdout.write(mark)
 

@@ -2,7 +2,7 @@ var urlencode = require('urlencode')
 var fs = require('fs')
 var uglify = require('uglify-js')
 
-module.exports = function (file) {
+module.exports = function (file, minify) {
   function wrapper() {
     var s = document.createElement('script')
     s.innerText = '!' + bookmark.toString() + '()'
@@ -12,11 +12,12 @@ module.exports = function (file) {
     }
   }
   return bookmarkify(
-    wrapper.toString().replace('/*******/', fs.readFileSync(file, 'utf8'))
+    wrapper.toString().replace('/*******/', fs.readFileSync(file, 'utf8')),
+    minify
   )
 }
 
-module.exports.src = function (src) {
+module.exports.src = function (src, minify) {
   function wrapper() {
     var s = document.createElement('script')
     s.type = 'text/javascript'
@@ -24,12 +25,15 @@ module.exports.src = function (src) {
     document.head.appendChild(s)
   }
   return bookmarkify(
-    wrapper.toString().replace('/*******/', src)
+    wrapper.toString().replace('/*******/', src),
+    minify
   )
 }
 
-function bookmarkify(code) {
-  code = uglify.minify(code, { fromString: true }).code
+function bookmarkify(code, minify) {
+  if (minify) {
+    code = uglify.minify(code, { fromString: true }).code
+  }
   return 'javascript:(' + urlencode(code) + ')()'
 }
 
