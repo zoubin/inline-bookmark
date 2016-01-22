@@ -1,10 +1,8 @@
 # inline-bookmark
 Create inline bookmarks.
 
-[![npm](https://nodei.co/npm/inline-bookmark.png?downloads=true)](https://www.npmjs.org/package/inline-bookmark)
-
-[![status](https://travis-ci.org/zoubin/inline-bookmark.svg?branch=master)](https://travis-ci.org/zoubin/inline-bookmark)
 [![version](https://img.shields.io/npm/v/inline-bookmark.svg)](https://www.npmjs.org/package/inline-bookmark)
+[![status](https://travis-ci.org/zoubin/inline-bookmark.svg?branch=master)](https://travis-ci.org/zoubin/inline-bookmark)
 [![dependencies](https://david-dm.org/zoubin/inline-bookmark.svg)](https://david-dm.org/zoubin/inline-bookmark)
 [![devDependencies](https://david-dm.org/zoubin/inline-bookmark/dev-status.svg)](https://david-dm.org/zoubin/inline-bookmark#info=devDependencies)
 
@@ -13,12 +11,14 @@ Create inline bookmarks.
 ```bash
 npm i -g inline-bookmark
 
+bookmark -h
+
 ```
 
 ### inline
 
 ```bash
-bookmark example/alert.js
+bookmark -f example/alert.js
 
 ```
 
@@ -39,7 +39,7 @@ javascript:(function%20wrapper()%7Bfunction%20e()%7Balert(%22Hi%2C%20there!%22)%
 ### external
 
 ```bash
-bookmark -s http://spriteme.org/spriteme.js
+bookmark -x http://spriteme.org/spriteme.js
 
 ```
 
